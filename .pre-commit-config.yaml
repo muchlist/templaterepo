@@ -1,0 +1,41 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: detect-private-key
+
+  - repo: local
+    hooks:
+      - id: go-unit-tests
+        name: Check Unit Testing
+        entry: go test -vet=off ./...
+        pass_filenames: false
+        language: system
+      - id: go-vet
+        name: Check Command With Vet
+        entry: go vet ./...
+        pass_filenames: false
+        language: system
+      - id: go-mod-tidy
+        name: Delete Unused Dependency
+        entry: go mod tidy
+        pass_filenames: false
+        language: system
+      - id: go-mod-verify
+        name: Verify Go Module
+        entry: go mod verify
+        pass_filenames: false
+        language: system
+      - id: go-fmt
+        name: Verify & Fix Go Format
+        entry: go fmt ./...
+        pass_filenames: false
+        language: system
+      - id: go-staticcheck
+        name: Go Static Checking
+        description: checking bugs, performance issues, offers simplifications and enforces style rules
+        entry: staticcheck ./...
+        pass_filenames: false
+        language: system

@@ -2,7 +2,7 @@ package user
 
 import (
 	"context"
-	"monorepo/internal/data/duser"
+	"monorepo/models/duser"
 )
 
 type UserRepo struct{}

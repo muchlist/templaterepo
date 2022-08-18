@@ -2,7 +2,7 @@ package user
 
 import (
 	"context"
-	"monorepo/internal/data/duser"
+	"monorepo/models/duser"
 )
 
 type UserStorer interface {
@@ -10,6 +10,8 @@ type UserStorer interface {
 	CreateOne(ctx context.Context, user *duser.User) error
 }
 
+// User dapat memakai notifikasi yang notabene adalah service lain
+// keduanya terhubungkan oleh interface
 type NotifSender interface {
 	DummySendNotification(message string) error
 }

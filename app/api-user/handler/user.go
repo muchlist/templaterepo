@@ -1,16 +1,16 @@
 package handler
 
 import (
-	"monorepo/internal/business/user"
+	"monorepo/business/user"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 type UserHandler struct {
-	usecase *user.UserCore
+	usecase *user.UserService
 }
 
-func NewUserHandler(usecase *user.UserCore) UserHandler {
+func NewUserHandler(usecase *user.UserService) UserHandler {
 	return UserHandler{
 		usecase: usecase,
 	}

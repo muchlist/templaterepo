@@ -2,9 +2,9 @@ package main
 
 import (
 	"monorepo/app/api-user/handler"
+	"monorepo/business/notifserv"
+	"monorepo/business/user"
 	"monorepo/conf"
-	"monorepo/internal/business/notifserv"
-	"monorepo/internal/business/user"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -28,10 +28,10 @@ func PrefareRoute(app *fiber.App, cfg conf.Config) {
 	notifier := notifserv.NewNotifServ()
 
 	// fullfill usecase / service / core
-	userCore := user.NewUserCore(userRepo, notifier)
+	userService := user.NewUserService(userRepo, notifier)
 
 	// generate handler
-	userHandler := handler.NewUserHandler(userCore)
+	userHandler := handler.NewUserHandler(userService)
 
 	// mapping url
 	app.Get("/profile", userHandler.Login)

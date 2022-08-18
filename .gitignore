@@ -15,3 +15,5 @@
 # vendor/
 READMExample.md
 .env
+.vscode
+.vscode/

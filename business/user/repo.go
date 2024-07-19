@@ -5,9 +5,14 @@ import (
 	modelUser "templaterepo/models/user"
 )
 
+// hanya jika perlu, gunakan fungsi bantuan seperti ini
+// untuk memastikan UserRepo memenuhi harapan interface tujuan
+// jika tidak ada linter error berarti UserRepo dapat dianggap UserStorer
+var _ UserStorer = (*UserRepo)(nil)
+
 type UserRepo struct{}
 
-// perhatikan retrun dari NewRepoUser, alih alih meretrun langsung interface,
+// perhatikan return dari NewRepoUser, alih alih mereturn langsung interface,
 // kita justru mereturn tipe konkrit UserRepo
 func NewRepoUser() *UserRepo {
 	return &UserRepo{}

@@ -1,10 +1,10 @@
 package main
 
 import (
-	"monorepo/app/api-user/handler"
-	"monorepo/business/notifserv"
-	"monorepo/business/user"
-	"monorepo/conf"
+	"templaterepo/app/api-user/handler"
+	"templaterepo/business/notifserv"
+	"templaterepo/business/user"
+	"templaterepo/conf"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"

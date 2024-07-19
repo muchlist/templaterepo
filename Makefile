@@ -21,6 +21,11 @@ confirm:
 run/api:
 	go run ./app/api-user
 
+## run/consumer: run the app/consumer application
+.PHONY: run/consumer/user
+run/consumer:
+	go run ./app/consumer-user
+
 ## db/migrations/new name=$1: create a new database migration
 .PHONY: db/migrations/new
 db/migrations/new:

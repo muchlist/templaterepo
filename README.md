@@ -1,7 +1,7 @@
-# Monorepo template
+# templaterepo template
 
-Architecture monorepo hexagonal golang.  
-Pada mulanya template ini diperuntukkan sebagai monorepo, ide dasarnya adalah kita dapat memakai ulang code pada beberapa aplikasi.  
+Architecture templaterepo hexagonal golang.  
+Pada mulanya template ini diperuntukkan sebagai templaterepo, ide dasarnya adalah kita dapat memakai ulang code pada beberapa aplikasi.  
 Karena adanya pemakaian ulang code, yang mana dalam tanda kutip `bisa saling memakai`, maka diperlukan suatu cara agar kita dapat menghindari import cycle dependency. Maka inilah caranya.
 
 ## Overview
@@ -43,7 +43,7 @@ $ go run ./app/api-user
 ### Layer business
 
 1. Pada layer business, terutama bagian `service (core)` berkomunikasi dengan mengandalkan interface menggunakan prinsip `dependency inversion`. Penjelasannya adalah seperti gambar berikut.  
-![interface](docs/interface.png)  
+![interface](documents/interface.png)  
 contoh bisa dilihat pada domain user `business/user` yang terhubung dengan `business/notifserv`. Penerapan dependensinya dapat dilihat pada `app/api-user/routing.go`.  
 Dengan metode seperti ini maka tidak akan ada import cycle dependency dan code menjadi sangat decouple antar domain.  
 2. memiliki konstruktor yang mengembalikan tipe konkrit.  

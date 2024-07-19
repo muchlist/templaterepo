@@ -6,7 +6,7 @@ func NewNotifServ() *NotifService { // return konkrit
 	return &NotifService{}
 }
 
-func (n *NotifService) DummySendNotification(message string) error {
-	// send notif to other server
+func (n *NotifService) SendNotification(message string) error {
+	// TODO : send notif to other server
 	return nil
 }

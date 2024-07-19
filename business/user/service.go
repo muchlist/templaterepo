@@ -2,7 +2,7 @@ package user
 
 import (
 	"context"
-	"monorepo/models/duser"
+	modelUser "templaterepo/models/user"
 )
 
 type UserService struct {
@@ -10,23 +10,25 @@ type UserService struct {
 	notifier NotifSender
 }
 
-func NewUserService(store UserStorer, notifier NotifSender) *UserService { // return tipe konkrit daripada interface
+// perhatikan retrun dari NewUserService, alih alih meretrun langsung interface,
+// kita justru mereturn tipe konkrit UserService
+func NewUserService(store UserStorer, notifier NotifSender) *UserService {
 	return &UserService{storer: store, notifier: notifier}
 }
 
-func (u *UserService) Login(ctx context.Context, username, password string) (duser.UserResp, error) {
+func (u *UserService) Login(ctx context.Context, username, password string) (modelUser.UserResp, error) {
 	user, _ := u.storer.Get(ctx, username)
-	// komparasi hashing password
+	// TODO : komparasi hashing password
 
-	// validasi
+	// TODO : validasi
 
-	// memanggil database, rest api, ataupun penyimpanan internal dan memadukannya
+	// TODO : memanggil database, rest api, ataupun penyimpanan internal dan memadukannya
 	// semuanya terjadi di layer service
 
 	// send notif
-	u.notifier.DummySendNotification(username + " success login")
+	u.notifier.SendNotification(username + " success login")
 
-	return duser.UserResp{
+	return modelUser.UserResp{
 		UID:         user.UID,
 		Name:        user.Name,
 		AccessToken: "dummy",

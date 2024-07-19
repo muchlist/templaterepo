@@ -2,16 +2,19 @@ package user
 
 import (
 	"context"
-	"monorepo/models/duser"
+	modelUser "templaterepo/models/user"
 )
 
+// UserStorer adalah interface yang mendefinisikan operasi yang dapat dilakukan terhadap database user.
+// Meskipun kita tau persis implementasinya ada di business/user/repo.go, tetap service (core) hanya bergantung pada interface ini.
+// Implementasi konkret dari antarmuka ini akan ditentukan oleh pengaturan dependensi di folder /app.
 type UserStorer interface {
-	Get(ctx context.Context, uid string) (duser.UserDTO, error)
-	CreateOne(ctx context.Context, user *duser.User) error
+	Get(ctx context.Context, uid string) (modelUser.UserDTO, error)
+	CreateOne(ctx context.Context, user *modelUser.UserEntity) error
 }
 
-// User dapat memakai notifikasi yang notabene adalah service lain
-// keduanya terhubungkan oleh interface
+// NotifSender adalah interface yang mendefinisikan operasi untuk mengirim notifikasi.
+// Objek yang digunakan untuk mengirim notifikasi akan ditentukan oleh pengaturan dependensi di folder /app.
 type NotifSender interface {
-	DummySendNotification(message string) error
+	SendNotification(message string) error
 }

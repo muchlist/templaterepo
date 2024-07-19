@@ -1,8 +1,8 @@
-package duser
+package user
 
 import "time"
 
-type User struct {
+type UserEntity struct {
 	UID         string
 	Name        string
 	Password    string

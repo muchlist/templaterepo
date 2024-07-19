@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"monorepo/business/user"
+	"templaterepo/business/user"
 
 	"github.com/gofiber/fiber/v2"
 )

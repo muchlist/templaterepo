@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 	"log"
-	"monorepo/conf"
-	dbpg "monorepo/pkg/db-pg"
 	"net/http"
 	"os"
 	"os/signal"
+	"templaterepo/conf"
+	dbpg "templaterepo/pkg/db-pg"
 
 	"github.com/gofiber/fiber/v2"
 )

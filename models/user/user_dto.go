@@ -1,4 +1,4 @@
-package duser
+package user
 
 import "time"
 
@@ -14,8 +14,8 @@ type UserDTO struct {
 	CreateAt int64  `json:"create_at"` // int64 -> time.Time
 }
 
-func (ud UserDTO) ToUser() User {
-	return User{
+func (ud UserDTO) ToUser() UserEntity {
+	return UserEntity{
 		UID:      ud.UID,
 		Name:     ud.Name,
 		Password: ud.Password,
@@ -29,7 +29,7 @@ type UserResp struct {
 	AccessToken string `json:"access_token"`
 }
 
-func FromUserToResponse(user User) UserResp {
+func FromUserToResponse(user UserEntity) UserResp {
 	return UserResp{
 		UID:         user.UID,
 		Name:        user.Name,

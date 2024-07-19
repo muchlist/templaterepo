@@ -2,17 +2,20 @@ package user
 
 import (
 	"context"
-	"monorepo/models/duser"
+	modelUser "templaterepo/models/user"
 )
 
 type UserRepo struct{}
 
-func NewRepoUser() *UserRepo { // return tipe konkrit daripada interface
+// perhatikan retrun dari NewRepoUser, alih alih meretrun langsung interface,
+// kita justru mereturn tipe konkrit UserRepo
+func NewRepoUser() *UserRepo {
 	return &UserRepo{}
 }
 
-func (u *UserRepo) Get(ctx context.Context, uid string) (duser.UserDTO, error) { // hindari return pointer
-	return duser.UserDTO{
+// Get mengembalikan data dan error, disini kita menghindari return pointer
+func (u *UserRepo) Get(ctx context.Context, uid string) (modelUser.UserDTO, error) {
+	return modelUser.UserDTO{
 		UID:      uid,
 		Name:     "dummy",
 		Password: "dummy",
@@ -20,7 +23,7 @@ func (u *UserRepo) Get(ctx context.Context, uid string) (duser.UserDTO, error) {
 	}, nil
 }
 
-func (u *UserRepo) CreateOne(ctx context.Context, user *duser.User) error {
+func (u *UserRepo) CreateOne(ctx context.Context, user *modelUser.UserEntity) error {
 	// create on database
 	// return id
 	user.UID = "new uid"

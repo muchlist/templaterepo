@@ -1,4 +1,4 @@
-module monorepo
+module templaterepo
 
 go 1.18
 
